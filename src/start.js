@@ -53,7 +53,9 @@ function start(
 
       if (shouldNextHyphenate()) {
         if (cache[cacheKey] === undefined) {
-          cache[cacheKey] = hyphenateWord(
+          cache[cacheKey] = Object.keys(cache).includes(textChunk)
+          ? cache[textChunk]
+          : hyphenateWord(
             textChunk,
             patterns,
             debug,

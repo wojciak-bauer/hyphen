@@ -283,11 +283,9 @@
       }
     }
 
-    levels[0] =
-      levels[1] =
-      levels[levels.length - 1] =
-      levels[levels.length - 2] =
-        0;
+    levels[0] = levels[1] = levels[levels.length - 1] = levels[
+      levels.length - 2
+    ] = 0;
 
     var //
       hyphenatedText = "",
@@ -418,12 +416,9 @@
 
         if (shouldNextHyphenate()) {
           if (cache[cacheKey] === undefined) {
-            cache[cacheKey] = hyphenateWord(
-              textChunk,
-              patterns,
-              debug,
-              hyphenChar
-            );
+            cache[cacheKey] = Object.keys(cache).includes(textChunk)
+              ? cache[textChunk]
+              : hyphenateWord(textChunk, patterns, debug, hyphenChar);
           }
 
           if (textChunk !== cache[cacheKey]) {
